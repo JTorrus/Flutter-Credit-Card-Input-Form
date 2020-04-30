@@ -30,7 +30,30 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MultiProvider(
+                                                providers: [
+                                                  ChangeNotifierProvider(
+                                                    create: (_) =>
+                                                        StateProvider(),
+                                                  ),
+                                                  ChangeNotifierProvider(
+                                                    create: (_) =>
+                                                        CardNumberProvider(),
+                                                  ),
+                                                  ChangeNotifierProvider(
+                                                    create: (_) =>
+                                                        CardNameProvider(),
+                                                  ),
+                                                  ChangeNotifierProvider(
+                                                    create: (_) =>
+                                                        CardValidProvider(),
+                                                  ),
+                                                  ChangeNotifierProvider(
+                                                    create: (_) =>
+                                                        CardCVVProvider(),
+                                                  )
+                                                ],
+                                                child: Scaffold(
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -73,6 +96,7 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-    );
+    ),
+                                              );
   }
 }
